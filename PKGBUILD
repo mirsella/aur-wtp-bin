@@ -1,23 +1,25 @@
 # Maintainer: mirsella <mirsella@protonmail.com>
-pkgname=kram-bin
-pkgver=1.7.30
+pkgname=wtp-bin
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Encode/decode/info to KTX/KTX2/DDS files with LDR/HDR and BC/ASTC/ETC2"
+pkgdesc="A powerful Git worktree CLI tool with automated setup, branch tracking, and smart navigation "
 arch=('x86_64')
-url="https://github.com/alecazam/kram"
+url="https://github.com/satococoa/wtp"
 license=('MIT')
-depends=('unzip')
-source=("${pkgname}-${pkgver}.zip::https://github.com/alecazam/kram/releases/download/v${pkgver}/kram-linux.zip")
-sha256sums=('039101fcdeef246564dcedbd881832222073ae50db03ade71140ad1a0e07e576')
+depends=('tar')
+source=("https://github.com/satococoa/wtp/releases/download/v${pkgver}/wtp_${pkgver}_Linux_${arch}.tar.gz")
+sha256sums=('93250aa9b907cb9022fb359c9837848bd47e7cf5db02f29478ec7fa801419374')
 
 package() {
 	cd "${srcdir}"
 
-	unzip "${pkgname}-${pkgver}.zip" -d "${pkgname}-${pkgver}"
+	path="wtp_${pkgver}_Linux_${arch}"
+	mkdir "$path"
+	tar -xzf "$path.tar.gz" -C "$path"
 
-	install -Dm755 "${pkgname}-${pkgver}/kram" "${pkgdir}/usr/bin/kram"
+	install -Dm755 "$path/wtp" "${pkgdir}/usr/bin/wtp"
 
-	if [[ -f "${pkgname}-${pkgver}/LICENSE" ]]; then
-		install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	if [[ -f "$path/LICENSE" ]]; then
+		install -Dm644 "$path/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	fi
 }
