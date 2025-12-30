@@ -1,6 +1,6 @@
 # Maintainer: mirsella <mirsella@protonmail.com>
 pkgname=wtp-bin
-pkgver=1.1.1
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="A powerful Git worktree CLI tool with automated setup, branch tracking, and smart navigation "
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/satococoa/wtp"
 license=('MIT')
 depends=('tar')
 source=("https://github.com/satococoa/wtp/releases/download/v${pkgver}/wtp_${pkgver}_Linux_${arch}.tar.gz")
-sha256sums=('93250aa9b907cb9022fb359c9837848bd47e7cf5db02f29478ec7fa801419374')
+sha256sums=('d1c21affb79da42c97d8bc796a89bd67328e722d891c272e4ea6b8758b1f75ac')
 
 package() {
 	cd "${srcdir}"
